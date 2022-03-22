@@ -4,3 +4,9 @@
 <% else %>
   <%= link_to 'Googleでサインアップしてね', user_google_omniauth_authorize_path, method: :post %>
 <% end %>
+
+<% if current_user.try(:admin?) %>
+  <h1>Blogs_admin</h1>
+<% else %>
+  <h1>Blogs</h1>
+<% end %>
