@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :blogs
+  resources :blogs do
+    resources :comments
+  end
   root to: 'oauth_test#index'
   # 新規登録する際に、継承したregistration_controllerが使用されるようにします。
   devise_for :users, controllers: {

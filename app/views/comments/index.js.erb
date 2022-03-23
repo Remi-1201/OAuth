@@ -1,0 +1,11 @@
+<%# $("#comments_area")で<div id="comments_area">から</div>までをターゲットにしています。 %>
+<%# render 'comments/index'でapp/views/comments/_index.html.erbのファイルの情報を取得し、ターゲットを取得したHTMLの内容で書き換えています。 %>
+$("#comments_area").html("<%= j(render 'comments/index', {
+# html()というのは、jQueryで使えるメソッドで、()の中に記述された値でレシーバ（この場合だと$("#comments_area")）を書き換えます。
+# @comment.blog.commentsのインスタンスの情報をcommentsという名前のローカル変数に入れ、_index.html.erbに渡しています
+  comments: @comment.blog.comments, blog: @comment.blog }) %>");
+<%# textareaフィールドの値を$("textarea")でターゲットにして、.val('')でその中身を空にしています。 %>
+<%# コメント保存後にコメントの入力欄を空にすることができます。 %>
+$("textarea").val('');
+
+$("#notice").html("<%= j flash[:notice] %>");

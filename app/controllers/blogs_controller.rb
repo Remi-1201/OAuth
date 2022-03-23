@@ -9,6 +9,8 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1 or /blogs/1.json
   def show
+    @comments = @blog.comments
+    @comment = @blog.comments.build
   end
 
   # GET /blogs/new
@@ -66,6 +68,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :content)
+      params.require(:blog).permit(:title, :content, :comment)
     end
 end
